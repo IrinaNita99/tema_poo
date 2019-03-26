@@ -240,7 +240,7 @@ int main()
                 break;
             case 2 :
                 Stack.pop();
-                cout << Stack;
+                //cout << Stack;
                 break;
             case 3 :
                 Stack.topS();
