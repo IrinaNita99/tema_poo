@@ -44,10 +44,24 @@ public:
     void Reverse(istream &in);
     friend ostream  &operator << (ostream &os, const stack &s1);
     friend istream  &operator >> (istream &,stack &);
+    operator==(const stack& st);
     stack operator - (stack&);
     ~stack();
 
 };
+
+int stack :: operator==(const stack& st)
+{
+
+    if(st.getTop()->getNumber() == this->getTop()->getNumber())
+
+         return true;
+
+     else
+         return false;
+
+
+}
 
 ostream &operator << (ostream &output,const stack& s1)
 {
@@ -154,6 +168,7 @@ void DisplayMenu1()
     cout << "3) Top function " << endl;
     cout << "4) - operator " << endl;
     cout << "5) Reverse stack "<<endl;
+    cout<<"6) Operator == "<<endl;
     cout << "0) EXIT " << endl << endl;
 }
 
@@ -170,7 +185,7 @@ stack :: ~stack()
 
 int main()
 {
-    stack Stack,Stack1;
+    stack Stack,Stack1,Stack2;
     ifstream f("file.in");
     int opt1;
     cout<<  "Choose your option for input:  " <<endl<<endl;
@@ -211,9 +226,18 @@ int main()
                 break;
             }
             case 5:
-                Stack.Reverse(cin); //citire consola
-                cout<<Stack;
+                Stack2.Reverse(cin); //citire consola
+                cout<<Stack2;
                 break;
+            case 6:
+                {
+                    stack Stack1;
+                    cin>>Stack1;
+                    if(Stack==Stack1)
+                        cout<<"The stack s1 and s2 are egual ";
+                    else
+                        cout<<"The stack s1 and s2 are not equal";
+                }
             }
             cout << "Choose your option to operate on stack :  " << endl << endl;
             DisplayMenu1();
@@ -257,6 +281,7 @@ int main()
                 Stack.Reverse(f);  //citire fisier
                 cout << Stack;
                 break;
+
             }
             cout << "Choose your option to operate on stack :  " << endl << endl;
             DisplayMenu1();
@@ -269,5 +294,6 @@ int main()
     }
     return 0;
 }
+
 
 
